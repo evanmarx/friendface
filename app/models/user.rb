@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
 
+  has_many :friendships, foreign_key: "user_id", dependent: :destroy
+  has_many :occurances_as_friend, class_name: "Friendship", 
+           foreign_key: "friend_id", dependent: :destroy
 
   def full_name
   	self.first_name + " " + self.last_name

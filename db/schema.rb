@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604144031) do
+ActiveRecord::Schema.define(:version => 20130604193605) do
+
+  create_table "friendships", :force => true do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.boolean "still_friends", :default => true
+  end
+
+  add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
+  add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
