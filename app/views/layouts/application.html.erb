@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Friendface</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <style>
+		ul.hmenu {
+		  list-style: none;	
+		  margin: 0 0 2em;
+		  padding: 0;
+		}
+
+		ul.hmenu li {
+		  display: inline;  
+		}
+  </style>
+
+</head>
+<body>
+	<header>
+		<ul class="hmenu">
+			<%= render 'devise/menu/registration_items' %>
+			<%= render 'devise/menu/login_items' %>
+		</ul>
+	</header>
+
+	<% if notice %> 
+		<p class="notice"><%= notice %></p>
+	<% end %>
+
+	<% if alert %> 
+		<p class="alert"><%= alert %></p>
+	<% end %> 
+
+	<%= yield %>
+
+</body>
+</html>
