@@ -1,10 +1,13 @@
 Friendface::Application.routes.draw do
   
-  devise_scope :user do
-    root to: "users#show"
-  end
+  root to: "users#show"
 
   devise_for :users
 
-  resources :users, only: [:show]
+  resources :users do
+  	resource :profile
+  end
+
+
+
 end
