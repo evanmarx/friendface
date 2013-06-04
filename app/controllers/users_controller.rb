@@ -11,9 +11,9 @@ class UsersController < ApplicationController
 
 		if @user.save 
 			@profile = Profile.create!(user_id: @user.id)
+			sign_in(@user)
 
-			#need to figure how to sign-in user upon creation/edit
-			redirect_to user_path(@user)
+			redirect_to edit_user_profile_url(@profile)
 		else
 			render :new
 		end
@@ -24,14 +24,14 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = current_user
+		@user = User.find(params[:id])
 	end
 
 	def update
-		@user = current_user
+		@user = User.find(params[:id])
 
 		if @user.update_with_password(params[:user])
-
+			sign_in(@user)
 			#need to figure how to sign-in user upon creation/edit
 			redirect_to user_path(@user)
 		else

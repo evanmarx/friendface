@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :username, presence: true
   validates :username, uniqueness: true
 
+  has_one :profile, dependent: :destroy
+
+
   def full_name
   	self.first_name + " " + self.last_name
   end
