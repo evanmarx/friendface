@@ -72,7 +72,10 @@ ul.hmenu li a {
 
 }
 
-
+a {
+	cursor: hand; 
+	cursor: pointer
+}
 /* Sign In Page */
 
 .sign-in-container {
@@ -80,10 +83,51 @@ ul.hmenu li a {
 	margin :auto;
 	background-color: white;
 	position : relative;
-	margin-top: 100px
+	margin-top: 100px;
 }
 
 
 .inner-sign-in-container {
 	margin :auto;
 }
+
+
+/* End Sign In Page */
+
+
+/* Profile Page */
+
+.profile-main-container {
+	margin :auto;
+	position : relative;
+	margin-top: 100px;
+	background-color: white;
+	height: 1000px;
+}
+
+.profile-body {
+
+}
+
+.inner-profile-body {
+
+}
+
+.profile-left-column {
+	width : 400px;
+	height : 700px;
+	float: left;
+	margin-left :20px;
+	border: 1px solid black;
+}
+
+.profile-right-column {
+	width : 500px;
+	height : 900px;
+	float: left;
+	padding-left: 20px;
+	margin :20px;
+	border: 1px solid black;
+}
+
+/* End Profile Page */
