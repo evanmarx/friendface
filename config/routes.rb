@@ -11,4 +11,6 @@ Friendface::Application.routes.draw do
   resources :friend_requests
 
   resources :friendships
+
+  resources :messages
 end
