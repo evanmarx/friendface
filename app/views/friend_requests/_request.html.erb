@@ -3,7 +3,11 @@
 	<% if current_user.friend_ids.include?(params[:id].to_i) %>
 		<button class="btn btn-danger">Defriend</button>
 	<% else %>
-		<button class="btn btn-danger" id="friend-request-<%= params[:id] %>">Friend</button>
+		<% if current_user.friend_requests.where(requestee_id: params[:id]).empty? %>
+			<button class="btn btn-danger" id="friend-request-<%= params[:id] %>">Friend</button>
+		<% else %>
+			<span class="badge badge-important" id="friend-request-pending">Request Pending</span>
+		<% end %>
 	<% end %> 
 <% end %> 
 
@@ -15,12 +19,10 @@
 		var $friend_button = $("#friend-request-<%= params[:id] %>")
 		var requestee_id = <%= params[:id] %>
 
-		console.log(requestee_id);
-		console.log("id => " + requestee_id)
 		$friend_button.on("click", function () {
 			
 			$.ajax({
-				url: "/friend_requests",
+				url: "<%= friend_requests_path %>",
 				type: "POST",
 				data: {
 						"id" : requestee_id
