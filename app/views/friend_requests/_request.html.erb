@@ -3,41 +3,38 @@
 	<% if current_user.friend_ids.include?(params[:id].to_i) %>
 		<button class="btn btn-danger">Defriend</button>
 	<% else %>
-		<div class="the-friending-button">
-			<%= form_for(FriendRequest.new, html: {id: "friend-request"}) do |f| %>
-				<%= hidden_field_tag "friend_request[user_id]", current_user.id %>
-				<%= hidden_field_tag "friend_request[requestee_id]", params[:id] %>
-				<%= f.submit "Friend" %>
-			<% end %>
-		</div>
-<!-- 		<button class="btn btn-danger" id="friend-request-<%#= params[:id] %>">Friend</button> -->
+		<button class="btn btn-danger" id="friend-request-<%= params[:id] %>">Friend</button>
 	<% end %> 
 <% end %> 
 
 
-<script> 
+<script>  
 
 	$(document).ready(function () {
 
-		// $("#friend-request-<%#= params[:id] %>").on("click", function () {
-		// 	console.log("clicked!");
-		// });
+		var $friend_button = $("#friend-request-<%= params[:id] %>")
+		var requestee_id = <%= params[:id] %>
 
-		$("#friend-request").on("submit", function (event) {
-
-			event.preventDefault();
-
-			$.post(
-				$("#friend-request").attr("action"),
-				$("#friend-request").serialize(),
-				function(data) {
-					$(".the-friending-button").addClass("invisible");
+		console.log(requestee_id);
+		console.log("id => " + requestee_id)
+		$friend_button.on("click", function () {
+			
+			$.ajax({
+				url: "/friend_requests",
+				type: "POST",
+				data: {
+						"id" : requestee_id
+					},
+				success: function() {
+					$friend_button.addClass("invisible");
 				}
-			);
-
+			})
 		});
+
 
 	});
 
 
 </script> 
+
+
