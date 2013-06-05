@@ -91,6 +91,9 @@ a {
 	margin :auto;
 }
 
+.invisible {
+	visibility: hidden;
+}
 
 /* End Sign In Page */
 
@@ -121,6 +124,15 @@ a {
 	border: 1px solid black;
 }
 
+.profile-left-column-inner {
+	margin : auto;
+}
+
+.main-profile-pic {
+	margin : 2px;
+	border: 1px solid black; 
+}
+
 .profile-right-column {
 	width : 500px;
 	height : 900px;
@@ -128,6 +140,12 @@ a {
 	padding-left: 20px;
 	margin :20px;
 	border: 1px solid black;
+}
+
+.friend-request-container {
+	float : right;
+	padding-right: 10px;
+	padding-top: 5px;
 }
 
 /* End Profile Page */

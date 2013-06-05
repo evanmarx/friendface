@@ -8,4 +8,7 @@ Friendface::Application.routes.draw do
   	resource :profile
   end
 
+  resources :friend_requests
+
+  resources :friendships
 end
