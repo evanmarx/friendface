@@ -69,10 +69,21 @@ ul.hmenu li a {
 .main {
 	width: 1000px;
 	margin: auto;
-	background-color: white;
+
 }
 
 
-.main-body {
-	
+/* Sign In Page */
+
+.sign-in-container {
+	width: 600px;
+	margin :auto;
+	background-color: white;
+	position : relative;
+	margin-top: 100px
+}
+
+
+.inner-sign-in-container {
+	margin :auto;
 }
