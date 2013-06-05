@@ -4,4 +4,5 @@ class FriendRequest < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :requestee, class_name: "User", foreign_key: :requestee_id
 
+	has_many :notifications, as: :notifiable 
 end
