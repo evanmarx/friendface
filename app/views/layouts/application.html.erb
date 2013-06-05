@@ -5,26 +5,29 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
-  <style>
-		ul.hmenu {
-		  list-style: none;	
-		  margin: 0 0 2em;
-		  padding: 0;
-		}
-
-		ul.hmenu li {
-		  display: inline;  
-		}
-  </style>
-
 </head>
+
 <body>
 	<header>
-		<ul class="hmenu">
-			<%= render 'devise/menu/registration_items' %>
-			<%= render 'devise/menu/login_items' %>
-		</ul>
+		<div class="main-header-container"> 
+			<div id="logo-container">
+				<div id="main-logo">
+					friendface
+				</div>
+			</div> <!-- end "logo-container" --> 
+
+			<div id="main-nav-container">
+				<ul class="hmenu">
+					<li>
+						<button class="btn btn-danger"><%= render 'devise/menu/registration_items' %></button>
+					</li>
+					<li>
+						<button class="btn btn-danger"><%= render 'devise/menu/login_items' %></button>
+					</li>
+				</ul>
+			</div> <!-- end "main-nav-container" --> 
+		
+		</div>  <!-- end "main-header-container" --> 
 	</header>
 
 	<% if notice %> 
@@ -35,7 +38,16 @@
 		<p class="alert"><%= alert %></p>
 	<% end %> 
 
-	<%= yield %>
 
+	<div class="main">
+
+
+		<div class="main-body">
+			<%= yield %>
+		</div> <!-- end "main-body" --> 
+
+	</div> <!-- end "main" -->
+
+	
 </body>
 </html>

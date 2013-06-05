@@ -8,6 +8,4 @@ Friendface::Application.routes.draw do
   	resource :profile
   end
 
-
-
 end

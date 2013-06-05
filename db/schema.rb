@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604193605) do
+ActiveRecord::Schema.define(:version => 20130604202854) do
+
+  create_table "friend_requests", :force => true do |t|
+    t.integer "user_id"
+    t.integer "requestee_id"
+    t.boolean "accepted",     :default => false
+    t.boolean "rejected",     :default => false
+  end
+
+  add_index "friend_requests", ["requestee_id"], :name => "index_friend_requests_on_requestee_id"
+  add_index "friend_requests", ["user_id"], :name => "index_friend_requests_on_user_id"
 
   create_table "friendships", :force => true do |t|
     t.integer "user_id"

@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
            foreign_key: :friend_id, dependent: :destroy
   has_many :friends, through: :friendships, source: :friend
 
+  has_many :friend_requests, foreign_key: :user_id
+  has_many :requests_to_be_friends, class_name: "FriendRequest", 
+           foreign_key: :requestee_id
+
   def full_name
   	self.first_name + " " + self.last_name
   end

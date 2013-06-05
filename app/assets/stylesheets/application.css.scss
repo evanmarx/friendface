@@ -13,3 +13,66 @@
  */
 
 @import "bootstrap";
+
+
+body {
+	width : 100%;
+	margin: 0 0 0 0;
+	background-color: #ADA4A3;
+}
+
+header {
+	width : 100%;
+	background-color: #383033;
+	padding: 0 0 0 0;
+}
+
+.main-header-container {
+	height : 50px;
+	margin : auto;
+}
+
+#logo-container {
+	float : left ;
+	padding-left: 10px;
+	padding-top: 15px;
+}
+
+#main-logo {
+	color : white;
+	font-size: 30px;
+	font-family: Arial bold;
+	margin: auto;
+}
+
+#main-nav-container {
+	float : right;
+	padding-right: 20px;
+	padding-top: 10px;
+}
+
+ul.hmenu {
+	list-style: none;	
+	margin: 0 0 2em;
+	padding: 0px;
+}
+
+ul.hmenu li {
+	display: inline;  
+}
+
+ul.hmenu li a {
+	text-decoration: none;
+	color : white;
+}
+
+.main {
+	width: 1000px;
+	margin: auto;
+	background-color: white;
+}
+
+
+.main-body {
+	
+}
