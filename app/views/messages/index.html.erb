@@ -1,0 +1,7 @@
+<%= @conversations.size %>
+
+<% @conversations.each do |convo| %>
+	<% convo.each do |mess| %>
+		<%= mess.body %>
+	<% end %> 
+<% end %> 
