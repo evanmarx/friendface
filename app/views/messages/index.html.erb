@@ -35,6 +35,8 @@
 					<hr>
 				<% end %> 
 			<% elsif @conversation %>
+
+				<%= render partial: "add_message" %> 
 				<% @conversation.each do |mess| %>
 						<%= render partial: "message", locals: {message: mess} %>
 				<% end %> 

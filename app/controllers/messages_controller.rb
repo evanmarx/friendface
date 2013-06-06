@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 	def index 
 		if params[:user_id]
 			partner_id = params[:user_id]
-			
+
 			@conversation = Message.where('(user_id = ? AND recipient_id = ?) OR (user_id = ? AND recipient_id = ?)', current_user.id, partner_id , partner_id , current_user.id).order('id DESC')
 		else
 			conversation_partner_ids = current_user.conversation_partners.map { |partner| partner.id }
@@ -20,5 +20,12 @@ class MessagesController < ApplicationController
 	end
 
 
+	def create
+		@message = Message.new(params[:message])
+		@message.user_id = current_user.id
+
+		@message.save! 
+
+	end
 
 end 
