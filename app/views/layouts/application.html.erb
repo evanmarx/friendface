@@ -17,19 +17,6 @@
 			</div> <!-- end "logo-container" --> 
 
 			<div id="main-nav-container">
-				<div>
-					<% if user_signed_in? %>
-						<%= link_to "Log Out", logout_path, class: "btn pull-right" %>
-						<strong class="navbar-text pull-right"><%= current_user.first_name %></strong>
-
-
-					<% else %>
-						<%= link_to "Sign Up", new_user_path, class: "btn pull-right btn-primary" %>
-						<%= render partial: 'devise/sessions/form' %>
-					<% end %>
-
-				</div>
-
 				<ul class="hmenu">
 					<li>
 						<button class="btn btn-danger"><%= render 'devise/menu/registration_items' %></button>

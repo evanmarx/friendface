@@ -27,6 +27,13 @@ class User < ActiveRecord::Base
   has_many :sent_messages, class_name: "Message", foreign_key: :user_id
   has_many :received_messages, class_name: "Message", foreign_key: :recipient_id
 
+  has_many :requested_conversation_partners, through: :sent_messages, source: :recipient 
+  has_many :requesting_conversation_partners, through: :received_messages, source: :user 
+
+  def conversation_partners
+    (self.requested_conversation_partners + self.requesting_conversation_partners).uniq
+  end
+
 
   def full_name
   	self.first_name + " " + self.last_name
