@@ -15,7 +15,7 @@
 @import "bootstrap";
 
 
-html, body, div, a, p, img {
+html, body, div, a, p, h2, h3 img {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -94,7 +94,9 @@ ul.hmenu li a {
 
 a {
 	cursor: hand; 
-	cursor: pointer
+	cursor: pointer;
+	text-decoration: none;
+	color: #ddd
 }
 
 a:hover {
@@ -200,20 +202,27 @@ a:hover {
 }
 
 .message > header {
-  padding: 20px;
-  border-bottom: 2px solid #ddd;
+  border-bottom: 5px solid #7D0707;
+  border-right: 5px solid #7D0707;
+  margin-right: 10px; 
+  width: 100px;
+  height: 110px;
+  float: left;
 }
 
 .message-thumb {
   float: left;
-  width: 50px;
+  width: 75px;
+  padding-left: 10px;
+  padding-top: 10px;
+
 }
 
 .message-thumb img {
   display: block;
-  width: 46px;
-  height: 46px;
-  border: 2px solid #00f;
+  width: 75px;
+  height: 75px;
+  border: 2px solid #ddd;
 }
 
 .message-info {
@@ -222,12 +231,15 @@ a:hover {
   color: #999;
 }
 
-.message-info h3 {
+.message-info h2 {
   font-weight: bold;
+  color : #ddd;
 }
 
-.message-text {
+.message-body {
+	padding-left: 10px;
   padding: 20px;
+  height: 110px;
 }
 
 /* End Messages Page */

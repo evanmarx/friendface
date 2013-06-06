@@ -1,18 +1,18 @@
 <section class="messages">
 	<article class="message">
 
-		<header class="message-group">
+		<header class="group">
 			<div class="message-thumb">
-				<a href="#"><img src="bunny.jpg" width="46" height="46" alt=""></a>
-			<div>
+				<a href="#"><img src="http://2.bp.blogspot.com/-TltX5DwBl7o/UEulpNr4JuI/AAAAAAAAABI/lPg1R1GUbeM/s1600/bunny.jpg" alt=""></a>
+			</div>
 			<div class="message-info">
-				<h3><a href="#">User's Name</a></h3>
-			<div>
+				<h2><a href="#"><%= User.find(message.user_id).full_name %></a></h2>
+			</div>
 		</header>
 
       <div class="message-body">
         
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p><%= message.body %></p>
       
       </div>
    
@@ -20,3 +20,5 @@
 	</article>
 
 </section> 
+
+

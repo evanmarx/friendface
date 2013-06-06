@@ -22,11 +22,9 @@
 	<div class="profile-body">
 		<div class="inner-profile-body">
 
-			<%= @conversations.size %>
-
 			<% @conversations.each do |convo| %>
 				<% convo.each do |mess| %>
-					<%= render partial: "message" %>
+					<%= render partial: "message", locals: {message: mess} %>
 				<% end %> 
 			<% end %> 
 		
