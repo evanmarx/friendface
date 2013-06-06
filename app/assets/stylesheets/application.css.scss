@@ -185,7 +185,7 @@ a:hover {
 /* Messages Page */
 
 .messages {
-  margin: 50px auto;
+  margin: 25px auto;
   width: 480px;
   padding: 10px;
   background: #ddd;
@@ -202,12 +202,14 @@ a:hover {
 }
 
 .message > header {
-  border-bottom: 5px solid #7D0707;
-  border-right: 5px solid #7D0707;
+  border: 5px solid #7D0707;
   margin-right: 10px; 
+  margin-left: 5px; 
+  margin-top: 5px; 
   width: 100px;
   height: 110px;
   float: left;
+
 }
 
 .message-thumb {
@@ -215,7 +217,6 @@ a:hover {
   width: 75px;
   padding-left: 10px;
   padding-top: 10px;
-
 }
 
 .message-thumb img {

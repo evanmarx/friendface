@@ -13,7 +13,7 @@ Friendface::Application.routes.draw do
 
   resources :friendships
 
-  
+  resources :messages
 
  	resources :notifications
 end

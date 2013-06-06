@@ -21,15 +21,25 @@
 
 	<div class="profile-body">
 		<div class="inner-profile-body">
-
-			<% @conversations.each do |convo| %>
-				<% convo.each do |mess| %>
-					<%= render partial: "message", locals: {message: mess} %>
+			<% if @conversations %>
+				<% @conversations.each do |convo| %> 
+					<% if convo.last.recipient.id == current_user.id %>
+						<% other_person = convo.last.user %>
+					<% else %>
+						<% other_person = convo.last.recipient %>
+					<% end %>
+					<a href="/users/<%= other_person.id %>/messages">
+						<%= "A message from: " + other_person.full_name %><br>
+					</a>
+						<%= "recieved " + time_ago_in_words(convo.last.created_at) + " ago" %>
+					<hr>
+				<% end %> 
+			<% elsif @conversation %>
+				<% @conversation.each do |mess| %>
+						<%= render partial: "message", locals: {message: mess} %>
 				<% end %> 
 			<% end %> 
-		
 			
-
 		</div> <!-- end inner-profile-body --> 
 	</div> <!-- end profile-body --> 
 
