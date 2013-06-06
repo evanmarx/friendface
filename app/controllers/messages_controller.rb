@@ -26,7 +26,11 @@ class MessagesController < ApplicationController
 
 		@message.save! 
 
-		render partial: "message", locals: {message: @message}
+		if request.xhr?
+			render partial: "message", locals: {message: @message}
+		else
+			redirect_to messages_url
+		end
 	end
 
 end 
