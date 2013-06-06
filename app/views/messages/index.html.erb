@@ -36,13 +36,59 @@
 				<% end %> 
 			<% elsif @conversation %>
 
-				<%= render partial: "add_message" %> 
-				<% @conversation.each do |mess| %>
-						<%= render partial: "message", locals: {message: mess} %>
-				<% end %> 
+				<section class="messages">
+					<article class="message">
+
+						<header class="group">
+							<div class="message-thumb">
+								<img src="http://2.bp.blogspot.com/-TltX5DwBl7o/UEulpNr4JuI/AAAAAAAAABI/lPg1R1GUbeM/s1600/bunny.jpg" alt="">
+							</div>
+						</header>
+
+				      <div class="message-form">
+				      	<h2>Send a message</h2>
+
+				        <%= simple_form_for(Message.new, remote: true, html: {id: "new-message-form"}) do |f| %>
+				        	<%= f.input :body %>
+				        	<%= hidden_field_tag "message[recipient_id]", params[:user_id] %>  
+				        	<%= f.submit "Send Message" %>
+				      	<% end %> 
+				      </div>
+				   
+					</article>
+				</section> 
+
+				
+	      <div class="convo-messages">
+					<% @conversation.each do |mess| %>
+							<%= render partial: "message", locals: {message: mess} %>
+					<% end %> 
+				</div>
 			<% end %> 
 			
 		</div> <!-- end inner-profile-body --> 
 	</div> <!-- end profile-body --> 
 
 </div> <!-- end profile-main-container --> 
+
+
+
+<script> 
+	
+	$(document).ready(function () {
+		console.log("success!")
+		$("#new-message-form").on("ajax:success", function (event, data) {
+
+			$(".convo-messages").prepend(data);
+
+			$("#message_body").val("");
+
+		});
+
+		
+
+	});
+
+</script> 
+
+

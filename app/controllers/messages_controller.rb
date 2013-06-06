@@ -26,6 +26,7 @@ class MessagesController < ApplicationController
 
 		@message.save! 
 
+		render partial: "message", locals: {message: @message}
 	end
 
 end 
