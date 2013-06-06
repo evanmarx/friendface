@@ -31,6 +31,16 @@ body {
 	background-color: #ADA4A3;
 }
 
+article, section {
+  display: block;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 header {
 	width : 100%;
 	background-color: #383033;
@@ -85,6 +95,10 @@ ul.hmenu li a {
 a {
 	cursor: hand; 
 	cursor: pointer
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 #friend-request-pending {
@@ -164,3 +178,56 @@ a {
 }
 
 /* End Profile Page */
+
+
+/* Messages Page */
+
+.messages {
+  margin: 50px auto;
+  width: 480px;
+  padding: 10px;
+  background: #ddd;
+}
+
+.message {
+  margin: 10px 0 0 0;
+  background: #fff;
+}
+
+
+.message:first-child {
+  margin-top: 0;
+}
+
+.message > header {
+  padding: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.message-thumb {
+  float: left;
+  width: 50px;
+}
+
+.message-thumb img {
+  display: block;
+  width: 46px;
+  height: 46px;
+  border: 2px solid #00f;
+}
+
+.message-info {
+  float: left;
+  padding: 0 0 0 20px;
+  color: #999;
+}
+
+.message-info h3 {
+  font-weight: bold;
+}
+
+.message-text {
+  padding: 20px;
+}
+
+/* End Messages Page */
