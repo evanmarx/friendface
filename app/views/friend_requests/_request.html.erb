@@ -1,13 +1,10 @@
 
 <% unless current_user.id == params[:id].to_i %>
+
 	<% if current_user.friend_ids.include?(params[:id].to_i) %>
 		<button class="btn btn-danger" id="destroy-friendship-<%= params[:id] %>">Defriend</button>
 	<% else %>
-		<% if current_user.friend_requests.where(requestee_id: params[:id]).empty? %>
-			<button class="btn btn-danger" id="friend-request-<%= params[:id] %>">Friend</button>
-		<% else %>
-			<span class="badge badge-important" id="friend-request-pending">Request Pending</span>
-		<% end %>
+		<button class="btn btn-danger" id="friend-request-<%= params[:id] %>">Friend</button>
 	<% end %> 
 <% end %> 
 
@@ -30,13 +27,29 @@
 				success: function() {
 					$friend_button.addClass("invisible");
 				}
-			})
+			});
 		});
+
+		<% if !Friendship.where(user_id: params[:id], friend_id: current_user.id).empty? %>
+			$delete_friend_button = $("#destroy-friendship-<%= params[:id] %>")
+			$delete_friend_button.on("click", function () {
+			
+				$.ajax({
+					url: "<%= friendship_path(Friendship.where(user_id: params[:id], friend_id: current_user.id)[0]) %>",
+					type: "DELETE",
+					data: {
+							"friend_id" : "<%= params[:id] %>"
+						},
+					success: function(data) {
+						$delete_friend_button.addClass("destroyed");
+					}
+				});
+			});
+		<% end %> 
 
 
 	});
 
 
 </script> 
-
 
