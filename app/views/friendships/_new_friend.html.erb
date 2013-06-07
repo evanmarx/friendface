@@ -1,4 +1,31 @@
-<li>
+<li id="friend-num-<%= friend.id %>">
 	<a href="/users/<%= friend.id %>"><%= friend.full_name %></a>
 	<button class="btn btn-danger" id="destroy-friendship-<%= friend.id %>">Defriend</button>
 </li>
+
+<!-- the ERROR IS HERE!!! --> 
+<script>
+
+
+$(document).ready(function () { 
+
+	$friend = $("#friend-num-<%= friend.id %>")
+
+	$("#destroy-friendship-<%= friend.id %>").on("click", function () {
+		
+		$.ajax({
+			url: "<%= friendship_path(Friendship.where(user_id: current_user.id, friend_id: friend.id)[0]) %>",
+			type: "DELETE",
+			data: {
+					"friend_id" : "<%= friend.id %>"
+				},
+			success: function(data) {
+				$friend.addClass("destroyed");
+			}
+		});
+
+	});
+
+
+});
+</script> 
