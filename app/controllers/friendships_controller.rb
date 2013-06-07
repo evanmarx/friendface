@@ -7,8 +7,9 @@ class FriendshipsController < ApplicationController
 
 	def create 
 		@friendship = Friendship.new(user_id: current_user.id, friend_id: params[:friend_id])
+		@reciporical_friendship = Friendship.new(user_id: params[:friend_id], friend_id: current_user.id)
 
-		if @friendship.save
+		if @friendship.save && @reciporical_friendship.save
 			fr = FriendRequest.find(params[:request_id])
 			fr.accepted = true
 			fr.save!
@@ -17,6 +18,18 @@ class FriendshipsController < ApplicationController
 		else 
 			puts "NOT SUCCESSFUL!"
 		end
-
 	end
+
+	def destroy
+		@friendship = Friendship.where(user_id: current_user.id, friend_id: params[:friend_id])[0]
+		@reciporical_friendship = Friendship.where(user_id: params[:friend_id], friend_id: current_user.id)[0]
+
+		@friendship.destroy
+		@reciporical_friendship.destroy
+		# this doesn't actually render anywhere right now!!!!
+		render partial: "friend_requests/rejected"
+	end
+
+
+
 end 

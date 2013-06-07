@@ -1,1 +1,4 @@
-<li><a href="/users/<%= friend.id %>"><%= friend.full_name %></a></li>
+<li>
+	<a href="/users/<%= friend.id %>"><%= friend.full_name %></a>
+	<button class="btn btn-danger" id="destroy-friendship-<%= friend.id %>">Defriend</button>
+</li>

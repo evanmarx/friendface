@@ -41,8 +41,9 @@
 
 				<ul> 
 				<% @friends.each do |friend| %>
-					<li>
+					<li id="friend-num-<%= friend.id %>">
 						<a href="users/<%= friend.id %>"><%= friend.full_name %></a>
+						<button class="btn btn-danger" id="destroy-friendship-<%= friend.id %>">Defriend</button>
 					</li>
 				<% end %> 
 				</ul>
@@ -55,4 +56,31 @@
 </div> <!-- end profile-main-container --> 
 
 
+
+<script>
+
+$(document).ready(function () { 
+
+	<% @friends.each do |friend| %>
+
+		$friend = $("#friend-num-<%= friend.id %>")
+
+		$("#destroy-friendship-<%= friend.id %>").on("click", function () {
+			
+			$.ajax({
+				url: "<%= friendship_path(Friendship.where(user_id: current_user.id, friend_id: friend.id)[0]) %>",
+				type: "DELETE",
+				data: {
+						"friend_id" : "<%= friend.id %>"
+					},
+				success: function(data) {
+					$friend.addClass("destroyed");
+				}
+			});
+
+		});
+	<% end %> 
+
+});
+</script> 
 

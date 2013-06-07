@@ -1,7 +1,7 @@
 
 <% unless current_user.id == params[:id].to_i %>
 	<% if current_user.friend_ids.include?(params[:id].to_i) %>
-		<button class="btn btn-danger">Defriend</button>
+		<button class="btn btn-danger" id="destroy-friendship-<%= params[:id] %>">Defriend</button>
 	<% else %>
 		<% if current_user.friend_requests.where(requestee_id: params[:id]).empty? %>
 			<button class="btn btn-danger" id="friend-request-<%= params[:id] %>">Friend</button>
