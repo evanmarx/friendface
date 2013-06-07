@@ -1,0 +1,68 @@
+<!-- locals: request --> 
+
+<li id="potential-friend-<%= request.user_id %>">
+	<a href="users/<%= request.user_id %>"><%= User.find(request.user_id).full_name %></a>
+	<button class="btn btn-danger" id="accept-friend-request-<%= request.user_id %>">
+		Accept
+	</button>
+	<button class="btn btn-danger" id="deny-friend-request-<%= request.user_id %>">
+		REJECT
+	</button>
+</li> 
+
+
+<script>  
+
+	$(document).ready(function () {
+
+		var $accept_friend_button = $("#accept-friend-request-<%= request.user_id %>");
+		var $deny_friend_button = $("#deny-friend-request-<%= request.user_id %>");
+		var $potential_friend = $("#potential-friend-<%= request.user_id %>");
+
+		var friend_id = <%= request.user_id %>;
+		var request_id = <%= request.id %>;
+
+		$accept_friend_button.on("click", function () {
+			$deny_friend_button.off("click");
+
+			$.ajax({
+				url: "<%= friendships_path %>",
+				type: "POST",
+				data: {
+						"friend_id" : friend_id,
+						"request_id" : request_id
+					},
+				success: function(data) {
+					$accept_friend_button.addClass("invisible");
+					$deny_friend_button.addClass("invisible");
+					$potential_friend.addClass("destroyed");
+					$(".new-current-friends").prepend(data);
+				}
+			})
+		});
+
+
+		$deny_friend_button.on("click", function () {
+			$accept_friend_button.off("click");
+			
+			$.ajax({
+				url: "<%= friend_request_path(request) %>",
+				type: "PUT",
+				data: {
+						"request_id" : request_id,
+						"rejected" : "true"
+					},
+				success: function() {
+					$accept_friend_button.addClass("invisible");
+					$deny_friend_button.addClass("invisible");
+					$potential_friend.addClass("destroyed");
+				}
+			})
+		});
+
+	});
+
+
+</script> 
+
+

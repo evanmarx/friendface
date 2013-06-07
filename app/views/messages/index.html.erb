@@ -76,7 +76,7 @@
 <script> 
 	
 	$(document).ready(function () {
-		console.log("success!")
+		
 		$("#new-message-form").on("ajax:success", function (event, data) {
 
 			$(".convo-messages").prepend(data);

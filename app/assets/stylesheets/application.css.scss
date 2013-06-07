@@ -35,6 +35,14 @@ article, section {
   display: block;
 }
 
+.invisible {
+	visibility: hidden;
+}
+
+.destroyed {
+	display: none;
+}
+
 .group:after {
   content: "";
   display: table;
@@ -122,9 +130,7 @@ a:hover {
 	margin :auto;
 }
 
-.invisible {
-	visibility: hidden;
-}
+
 
 /* End Sign In Page */
 

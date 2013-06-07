@@ -1,0 +1,58 @@
+
+
+
+<div class="profile-main-container">
+
+	<div class="profile-header"> 
+		<div class="inner-profile-header">
+			<div class="navbar">
+			  <div class="navbar-inner">
+			    <ul class="nav">
+			      <li><a href="/users/<%= current_user.id %>">Profile</a></li>
+			      <li><a href="/users/<%= current_user.id %>">Friends</a></li>
+			      <li><a href="/users/<%= current_user.id %>">Inbox</a></li>
+			    </ul>
+			  </div>
+			</div>
+
+		</div> <!-- end inner-profile-header --> 
+	</div> <!-- end profile-header --> 
+
+
+	<div class="profile-body">
+		<div class="inner-profile-body">
+
+			<div class="pending-requests">
+				<h2>Pending Friend Requests</h2>
+				<ul>
+					<% current_user.requests_to_be_friends.where(rejected: false, accepted: false).each do |request| %>
+						<%= render partial: "friend_requests/pending_request", locals: {request: request} %>
+					<% end %>
+				</ul>
+			</div>
+
+			<div class="current-friends"> 
+				<h2>Current Friends:</h2>
+				<div>
+					<ul class="new-current-friends"> 
+					</ul>
+				</div> 
+
+
+				<ul> 
+				<% @friends.each do |friend| %>
+					<li>
+						<a href="users/<%= friend.id %>"><%= friend.full_name %></a>
+					</li>
+				<% end %> 
+				</ul>
+			<div>
+
+
+		</div> <!-- end inner-profile-body --> 
+	</div> <!-- end profile-body --> 
+
+</div> <!-- end profile-main-container --> 
+
+
+
