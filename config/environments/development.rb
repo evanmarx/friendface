@@ -34,4 +34,13 @@ Friendface::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => friendface_dev,
+      :access_key_id => AKIAIRHP6KPUTGIEH6AA,
+      :secret_access_key => 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
+    }
+  }
 end
